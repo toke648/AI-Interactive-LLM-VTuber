@@ -27,8 +27,12 @@ def main():
 
 
 if __name__ == '__main__':
+    # You can set Initial Setting of AI
+    setting = open('ai_setting', 'r').read()
+
+    # You can use dictionary to show it
     conversation_history = [
-        {'role': 'system', 'content': 'You are a helpful assistant.Notice:your every sentence do not exceed 30 word.'},
+        {'role': 'system', 'content': f'{setting}'},
     ]
 
     while True:
@@ -36,11 +40,12 @@ if __name__ == '__main__':
         if content.lower() == 'exit':
             break
         elif content.lower() == 'audio':
-            content = record()
-            if content:
-                main()
-            else:
-                print('没有有效输入，无法构建信息')
+            for i in range(3):
+                content = record()
+                if content:
+                    main()
+                else:
+                    print('No valid input, unable to construct information')
         elif content.lower() == 'dictionary':
             print(pd.DataFrame(conversation_history))
         else:

@@ -1,4 +1,4 @@
-# 类OpenAi实时语音输入
+# Like Chatgpt Real time voice input
 import speech_recognition as sr
 
 def record():
@@ -9,20 +9,20 @@ def record():
 
         while True:
             try:
-                # 检测声音
+                # Detecting sound
                 audio = recognizer.listen(source, timeout=2)
                 text = recognizer.recognize_google(audio, language='en-US')
 
                 print(f"You told: {text}")
                 return text
             except sr.UnknownValueError as u:
-                # 如果无法理解语音，可以选择忽略
-                print(f'无法理解语音')
+                # If you cannot understand the voice, you can choose to ignore it
+                print(f'Can not understand audio')
             except sr.WaitTimeoutError as w:
-                # 超过 2 秒没有检测到声音，继续循环
-                print(f'超过 2 秒没有检测到声音')
+                # No sound detected for more than 2 seconds, continue looping
+                print(f'No Sound detected for more than 2 seconds')
             except sr.RequestError as e:
-                print(f"识别服务出错: {e}")
+                print(f"Identification service error: {e}")
 
 if __name__ == '__main__':
     record()

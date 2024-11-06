@@ -23,6 +23,7 @@ def large_language_model(content,conversation_history, retries=3):
         except Exception as e:
             print(f"Attempt {attempt + 1} failed: {e}")
             if attempt < retries - 1:
-                time.sleep(2)  # 等待重试
+                time.sleep(2)  # wait retry
             else:
-                raise  # 如果所有重试都失败，抛出异常
+                raise  # If all retries fail, throw an exception
+
