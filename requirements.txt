@@ -1,7 +1,8 @@
+wheel
 playsound
 edge-tts
 openai
 playsound
 pandas
 asyncio
-speech_recognition
+SpeechRecognition
