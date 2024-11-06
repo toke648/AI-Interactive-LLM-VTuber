@@ -1,4 +1,4 @@
-# Interactive-LLM
+# Interactive-LLM-VTuber
 
 [![license](https://img.shields.io/github/license/toke648/Interactive-LLM)](https://github.com/toke648/Interactive-LLM/blob/main/LICENSE) 
 
