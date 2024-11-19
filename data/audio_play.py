@@ -1,7 +1,7 @@
 import pyaudio
 import wave
 
-# 录音
+# Record
 FORMAT = pyaudio.paInt16
 CHANNELS = 1
 RATE = 44100
@@ -10,7 +10,7 @@ WAVE_OUTPUT_FILENAME = "output.wav"
 
 audio = pyaudio.PyAudio()
 
-# 开始录音
+# Start recording
 stream = audio.open(format=FORMAT, channels=CHANNELS, rate=RATE, input=True, frames_per_buffer=CHUNK)
 print("Recording...")
 

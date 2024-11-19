@@ -28,7 +28,7 @@ def main():
 
 if __name__ == '__main__':
     # You can set Initial Setting of AI
-    setting = open('ai_setting', 'r').read()
+    setting = open('ai_setting.txt', 'r').read()
 
     # You can use dictionary to show it
     conversation_history = [
