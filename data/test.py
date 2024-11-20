@@ -213,7 +213,7 @@
 #
 # async def main():
 #     text = ''
-#     output = 'C:\\Users\\16673\\Desktop\\audio.mp3'
+#     output = 'C:\\Users\\16673\\Desktop\\output.mp3'
 #
 #     while True:
 #         # 大语言模型openai+通义千问

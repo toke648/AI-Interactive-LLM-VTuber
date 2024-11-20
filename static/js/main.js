@@ -62,9 +62,9 @@ document.addEventListener("DOMContentLoaded", () => {
             }
             $("#start").prop("disabled", true); // 防止多次点击
 
-            axios.get(`http://127.0.0.1:2020/dealAudio?file_name=output.mp3&voice=zh-CN-XiaoxiaoNeural&text=${encodeURIComponent(text)}&timestamp=${Date.now()}`)
+            axios.get(`http://127.0.0.1:5000/dealAudio?file_name=output.mp3&voice=en-US-AvaNeural&text=${encodeURIComponent(text)}&timestamp=${Date.now()}`)
                 .then(response => {
-                    const audioUrl = response.data.audio_file + `?t=${Date.now()}`;
+                    const audioUrl = `/audio/output.mp3?t=${Date.now()}`;
                     console.log("音频文件路径:", audioUrl);
 
                     talk(model4, audioUrl); // 播放音频并绑定动作

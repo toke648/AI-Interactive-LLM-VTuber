@@ -5,8 +5,8 @@ import time
 # Function to get response from the language model
 def large_language_model(content,conversation_history, retries=3):
     client = OpenAI(
-        api_key="your_api_key",
-        base_url="your_openai_api",
+        api_key="sk-707613869ffe4b06b165e396e580f847",
+        base_url="https://dashscope.aliyuncs.com/compatible-mode/v1",
     )
 
     # Requesting completion from the conversation history
