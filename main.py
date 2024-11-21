@@ -20,7 +20,7 @@ def main():
         asyncio.run(speech_generation_model(response))
 
         # Play audio file
-        audio_file_path = "data/audio/audio.mp3"
+        audio_file_path = r"audio\output.mp3"
         playsound(audio_file_path)
     except Exception as e:
         print(f'Error playing audio: {e}')

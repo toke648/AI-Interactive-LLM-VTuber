@@ -62,15 +62,20 @@ document.addEventListener("DOMContentLoaded", () => {
             }
             $("#start").prop("disabled", true); // 防止多次点击
 
-            axios.get(`http://127.0.0.1:5000/dealAudio?file_name=output.mp3&voice=en-US-AvaNeural&text=${encodeURIComponent(text)}&timestamp=${Date.now()}`)
+//            axios.get(`http://127.0.0.1:5000/dealAudio?file_name=output.mp3&voice=en-US-AvaNeural&text=${encodeURIComponent(text)}&timestamp=${Date.now()}`)
+                axios.post('http://192.168.183.63:5000/dealAudio', {
+                    text: text,
+                    voice: 'en-US-AvaNeural',
+                    file_name: 'output.mp3'
+                })
                 .then(response => {
-                    const audioUrl = `/audio/output.mp3?t=${Date.now()}`;
+                    const audioUrl = response.data.audio_file + `?t=${Date.now()}`;
                     console.log("音频文件路径:", audioUrl);
 
                     talk(model4, audioUrl); // 播放音频并绑定动作
                     model4.motion("Tap");   // 触发自定义动作
 
-                    audio.oncanplay = () => { // 确保音频可播放后再触发
+                    audio.oncanplay = () => {
                         audio.play().catch(error => console.error('播放音频失败:', error));
                     };
 

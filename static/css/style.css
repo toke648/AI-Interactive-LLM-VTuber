@@ -1,12 +1,12 @@
-    #control {
-        position: absolute;
-        top: 50px;
-        left: 50px;
-        color: #ffffff;
-        font-size: 18px;
-    }
+#control {
+    position: absolute;
+    top: 50px;
+    left: 50px;
+    color: #ffffff;
+    font-size: 18px;
+}
 
-    .label {
-        font-size: 32px;
-        font-weight: 800;
-    }
+.label {
+    font-size: 32px;
+    font-weight: 800;
+}

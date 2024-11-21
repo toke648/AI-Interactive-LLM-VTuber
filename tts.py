@@ -7,7 +7,7 @@ async def speech_generation_model(response):
     voice = 'en-US-AvaNeural'
     # voice = 'ja-JP-NanamiNeural'
 
-    output = r"/audio/output.mp3"
+    output = r"audio\output.mp3"
     rate = '-5%'
     volume = '+50%'
 

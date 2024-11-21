@@ -1,7 +1,10 @@
 playsound
 edge-tts
+flask
+flask-cors
+Flask[async]
 openai
-pandas==1.3.5
+pandas
 pyaudio
 asyncio
 SpeechRecognition==3.9.0
