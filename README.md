@@ -1,6 +1,6 @@
-# Interactive-LLM-VTuber
+# AI-Interactive-LLM-VTuber
 
-[![license](https://img.shields.io/github/license/toke648/Interactive-LLM-VTuber)](https://github.com/toke648/Interactive-LLM-VTuber/main/LICENSE) 
+[![license](https://img.shields.io/github/license/toke648/AI-Interactive-LLM-VTuber)](https://github.com/toke648/AI-Interactive-LLM-VTuber/main/LICENSE) 
 
 ## What is this project
 This project is a simple VTuber backend model (the frontend is currently learning and configuring)
