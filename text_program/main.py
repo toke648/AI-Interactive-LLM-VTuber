@@ -7,20 +7,15 @@ import asyncio
 
 def main():
     # Add user input to conversation history
-    conversation_history.append({'role': 'user', 'content': content})
     try:
         # Get the model's response
         response = large_language_model(content, conversation_history)
         print(response)
 
-        # Add assistant's response to conversation history
-        conversation_history.append({'role': 'assistant', 'content': response})
-
         # Generate speech
-        asyncio.run(speech_generation_model(response))
-
         # Play audio file
         audio_file_path = r"audio\output.mp3"
+        asyncio.run(speech_generation_model(response, audio_file_path))
         playsound(audio_file_path)
     except Exception as e:
         print(f'Error playing audio: {e}')
@@ -28,7 +23,7 @@ def main():
 
 if __name__ == '__main__':
     # You can set Initial Setting of AI
-    setting = open('ai_setting.txt', 'r').read()
+    setting = open('ai_setting_VTuber-Neuro sama.txt', 'r').read()
 
     # You can use dictionary to show it
     conversation_history = [

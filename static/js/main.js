@@ -62,11 +62,12 @@ document.addEventListener("DOMContentLoaded", () => {
             }
             $("#start").prop("disabled", true); // 防止多次点击
 
-//            axios.get(`http://127.0.0.1:5000/dealAudio?file_name=output.mp3&voice=en-US-AvaNeural&text=${encodeURIComponent(text)}&timestamp=${Date.now()}`)
-                axios.post('http://192.168.183.63:5000/dealAudio', {
+                //axios.get(`http://127.0.0.1:5000/dealAudio?file_name=output.mp3&voice=en-US-AvaNeural&text=${encodeURIComponent(text)}&timestamp=${Date.now()}`)
+                axios.post('http://127.0.0.1:5000/dealAudio', {
                     text: text,
-                    voice: 'en-US-AvaNeural',
-                    file_name: 'output.mp3'
+                    // voice: 'zh-CN-XiaoxiaoNeural',
+                    // voice: 'en-US-AvaNeural',
+                    // file_name: 'output.mp3'
                 })
                 .then(response => {
                     const audioUrl = response.data.audio_file + `?t=${Date.now()}`;
