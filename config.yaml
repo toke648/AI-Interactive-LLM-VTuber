@@ -1,0 +1,31 @@
+#内网穿透框架 FRP
+#
+#启动 frps 服务：
+#"C:\Program Files\frp_0.60.0_windows_amd64\frps.exe" -c "C:\Program Files\frp_0.60.0_windows_amd64\frps.toml"
+#
+#启动 frpc 服务：
+#"C:\Program Files\frp_0.60.0_windows_amd64\frpc.exe" -c "C:\Program Files\frp_0.60.0_windows_amd64\frpc.toml"
+#
+#测试服务器端口
+#netstat -ano | findstr :7000
+#
+#运行 server 程序
+
+audio_directory: audio
+audio_file: output.mp3
+
+# tts Setting
+default_voice: en-US-AvaNeural
+# default_voice: ja-JP-NanamiNeural
+# default_voice: zh-CN-XiaoxiaoNeural
+
+default_rate: -5%
+default_volume: +50%
+
+# llm Setting
+system_prompt: templates/ai_setting_失忆少女.txt
+
+openai_api_key: your_api_key
+openai_base_url: your_base_url
+
+models: qwen-plus

@@ -9,7 +9,6 @@ It can achieve simple voice input, voice output, LLM, and interactive effects.
 ## Demo（In development）
 ![image](https://github.com/user-attachments/assets/2b5378ce-fe18-44d4-8a1f-ddb76b5ffda6)
 
-
 ## Constructed by
 <div>
   <p>python</p>

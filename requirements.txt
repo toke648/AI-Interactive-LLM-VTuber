@@ -1,5 +1,5 @@
 playsound
-edge-tts
+edge-tts==6.1.18
 flask
 flask-cors
 openai
