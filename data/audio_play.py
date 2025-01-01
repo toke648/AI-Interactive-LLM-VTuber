@@ -23,12 +23,12 @@ try:
 except KeyboardInterrupt:
     print("Recording finished.")
 
-# 结束录音
+# done recording
 stream.stop_stream()
 stream.close()
 audio.terminate()
 
-# 保存为 WAV 文件
+# save audio
 with wave.open(WAVE_OUTPUT_FILENAME, 'wb') as wf:
     wf.setnchannels(CHANNELS)
     wf.setsampwidth(audio.get_sample_size(FORMAT))

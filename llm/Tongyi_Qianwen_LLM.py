@@ -32,7 +32,7 @@ class ContentGenerate:
             back_message = completion.model_dump_json()
             # 'str' turn to 'dict' | <class 'str'> ——> <class 'dict'>
             data = json.loads(back_message)
-            # 解析后的文本
+            # access the result
             result = data['choices'][0]['message']['content']
 
             # add result to history
@@ -50,13 +50,13 @@ class ContentGenerate:
             pd.DataFrame(self.content_history)
 
             client = OpenAI(
-                # 若没有配置环境变量，请用百炼API Key将下行替换为：api_key="sk-xxx",
+                # if you have not configured the environment variable, please replace the following line with: api_key="sk-xxx",
                 api_key="ollama",
                 base_url="http://localhost:11434/v1/",
             )
 
             completion = client.chat.completions.create(
-                model="qwen2.5:7b",  # 模型列表：https://help.aliyun.com/zh/model-studio/getting-started/models
+                model="qwen2.5:7b",  # model list: https://help.aliyun.com/zh/model-studio/getting-started/models
                 messages=self.content_history
             )
 

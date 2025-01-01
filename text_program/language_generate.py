@@ -7,8 +7,8 @@ def large_language_model(content,conversation_history, retries=3):
     conversation_history.append({'role': 'user', 'content': content})
 
     client = OpenAI(
-        api_key="sk-707613869ffe4b06b165e396e580f847",
-        base_url="https://dashscope.aliyuncs.com/compatible-mode/v1",
+        api_key="your_api_key",
+        base_url="your_base_url",
     )
 
     # Requesting completion from the conversation history

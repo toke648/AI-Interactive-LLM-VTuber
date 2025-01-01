@@ -13,12 +13,12 @@ content_generator = Tongyi_Qianwen_LLM.ContentGenerate()
 app = Flask(__name__)
 CORS(app, resources={r"/*": {"origins": "*"}})
 
-# 首页路由
+# home page route
 @app.route('/')
 def index():
     return redirect(url_for('static', filename='index.html'))
 
-# favicon 路由
+# favicon route
 @app.route('/favicon.ico')
 def favicon():
     return send_from_directory(os.path.join(app.root_path, 'static'), 'favicon.ico', mimetype='image/x-icon')
@@ -41,7 +41,7 @@ def deal_audio():
     except Exception as e:
         return jsonify({'error': str(e)}), 500
 
-# 提供音频文件
+# provide audio files
 @app.route('/audio/<path:filename>', methods=['GET'])
 def get_audio(filename):
     return send_from_directory('audio', filename)

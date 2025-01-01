@@ -1,7 +1,7 @@
 import os
 import yaml
 
-# 此界面用于设置数据集
+# Setting class
 class MainSetting():
     def __init__(self):
         
@@ -43,9 +43,9 @@ class MainSetting():
         self.path_dir = os.path.dirname(os.path.abspath(__file__))
         self.system_prompt = open('templates/ai_setting_VTuber-Neuro sama.txt', 'r').read()
 
-        # 我用的是阿里云的通义千问模型
-        self.openai_api_key = "sk-707613869ffe4b06b165e396e580f847"
-        self.openai_base_url = "https://dashscope.aliyuncs.com/compatible-mode/v1"
+        # Use Alibaba Cloud Tongyi Qianwen API Key for integration.
+        self.openai_api_key = "your_api_key"
+        self.openai_base_url = "your_base_url"
 
         self.models = "qwen-plus"
 
