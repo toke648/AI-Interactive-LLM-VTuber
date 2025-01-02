@@ -22,45 +22,42 @@ This project is a virtual VTuber interactive model. Currently, it supports basic
 
 ## How to work it
 
-1. Download and install either **VSCode** or **PyCharm**.
-2. Navigate to the project directory and run the following command to install dependencies:
+Download and install either **VSCode** or **PyCharm**.
+Navigate to the project directory and run the following command to install dependencies:
 
-```sh
-pip install -r requirements.txt
-```
+It's recommended to use a virtual environment to keep the dependencies isolated.
 
-### Note
-The LLM component supports two options:
-- Use **Alibaba Cloud Tongyi Qianwen API Key** for integration.
-- Download and locally deploy **Ollama models**.
+### Open a terminal/command prompt and navigate to the project directory.
 
-## Mem0 (In Development)
+### Create a virtual environment by running the following command:
 
-## Project Structure
+   ```sh
+   python3 -m venv myven
+   ```
 
-```
-2025/01/02  00:19    <DIR>          .
-2025/01/02  00:10    <DIR>          ..
-2025/01/02  00:11    <DIR>          .idea
-2025/01/02  00:11    <DIR>          audio
-2025/01/01  20:23               761 config.yaml
-2025/01/02  00:11    <DIR>          data
-2025/01/02  00:06             1,781 dockerfile
-2025/01/01  16:05             1,064 LICENSE
-2025/01/02  00:11    <DIR>          llm
-2025/01/02  00:15             2,078 main_setting.py
-2025/01/02  00:21             1,037 README.md
-2025/01/02  00:18               174 requirements.txt
-2025/01/01  17:40           191,857 Screenshot 2025-01-01 174024-demo.png
-2025/01/01  20:19             1,532 server.py
-2025/01/02  00:11    <DIR>          static
-2025/01/02  00:11    <DIR>          stt
-2025/01/02  00:11    <DIR>          templates
-2025/01/02  00:11    <DIR>          text_program
-2025/01/02  00:11    <DIR>          translate
-2025/01/02  00:11    <DIR>          tts
-2025/01/02  00:11    <DIR>          __pycache__
-```
+### Activate the virtual environment:
+   - On Windows:
+
+      ```sh
+      myven\Scripts\activate
+      ```
+   - On Linux/macOS:
+      ```sh
+      source venv/bin/activate
+      ```
+
+#### Use the requirements. txt file to install the required dependencies:
+   ```sh
+   pip install -r requirements.txt
+   ```
+### Run the server.py file
+   ```sh
+   python server.py
+   ```
+ ### Additional Notes
+You can change the port or other configurations in the main_setting.py file.
+- Ensure that any environment variables like API keys are set correctly, especially for LLM integration.
+- If you're using  **Alibaba Cloud Tongyi Qianwen API Key** or **Ollama models**, make sure to properly configure them in code.
 
 ## Using the Dockerfile
 
@@ -94,7 +91,30 @@ If you no longer need the container, you can remove it with:
 ```sh
 docker rm vtuber
 ```
+## Mem0/Long Memory (In Development)
 
+## Project Structure
 
-
-
+```
+2025/01/02  00:19    <DIR>          .
+2025/01/02  00:10    <DIR>          ..
+2025/01/02  00:11    <DIR>          .idea
+2025/01/02  00:11    <DIR>          audio
+2025/01/01  20:23               761 config.yaml
+2025/01/02  00:11    <DIR>          data
+2025/01/02  00:06             1,781 dockerfile
+2025/01/01  16:05             1,064 LICENSE
+2025/01/02  00:11    <DIR>          llm
+2025/01/02  00:15             2,078 main_setting.py
+2025/01/02  00:21             1,037 README.md
+2025/01/02  00:18               174 requirements.txt
+2025/01/01  17:40           191,857 Screenshot 2025-01-01 174024-demo.png
+2025/01/01  20:19             1,532 server.py
+2025/01/02  00:11    <DIR>          static
+2025/01/02  00:11    <DIR>          stt
+2025/01/02  00:11    <DIR>          templates
+2025/01/02  00:11    <DIR>          text_program
+2025/01/02  00:11    <DIR>          translate
+2025/01/02  00:11    <DIR>          tts
+2025/01/02  00:11    <DIR>          __pycache__
+```
