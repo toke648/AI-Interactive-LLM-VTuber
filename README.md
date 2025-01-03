@@ -33,14 +33,14 @@ It's recommended to use a virtual environment to keep the dependencies isolated.
 ### Create a virtual environment by running the following command:
 
    ```sh
-   python3 -m venv myven
+   python -m venv vtuber
    ```
 
 ### Activate the virtual environment:
    - On Windows:
 
       ```sh
-      myven\Scripts\activate
+      vtubre\Scripts\activate
       ```
    - On Linux/macOS:
       ```sh

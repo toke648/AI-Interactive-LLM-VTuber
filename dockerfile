@@ -1,38 +1,21 @@
-# Base image
+# Use the official Python image
 FROM python:3.11-slim
 
-# Set noninteractive mode for apt
-ENV DEBIAN_FRONTEND=noninteractive
+# Set the working directory
+WORKDIR /app  
 
-# Install system dependencies
-RUN apt-get update && apt-get install -y --no-install-recommends \
-    build-essential \
-    libsndfile1 \
-    portaudio19-dev \
-    ffmpeg \
-    libasound2-dev \
-    curl \
-    git \
-    && rm -rf /var/lib/apt/lists/*
+# Install system dependencies and clean up cache
+RUN apt-get update && apt-get install -y gcc libasound2-dev portaudio19-dev libportaudio2 libportaudiocpp0 && apt-get clean && rm -rf /var/lib/apt/lists/*
 
-# Upgrade pip, setuptools, and wheel
-RUN python3 -m pip install --upgrade pip setuptools wheel
+# Install the wheel package
+RUN pip install --no-cache-dir wheel
 
-# Create and activate a virtual environment
-RUN python3 -m venv /opt/venv
-ENV PATH="/opt/venv/bin:$PATH"
+# Copy requirements.txt and install dependencies
+COPY requirements.txt .  
+RUN pip install --no-cache-dir -r requirements.txt
 
-# Copy the requirements file
-COPY requirements.txt /app/requirements.txt
-
-# Install Python dependencies
-RUN pip install -i https://mirrors.aliyun.com/pypi/simple/ --no-cache-dir -r /app/requirements.txt
-
-# Copy application code
-COPY . /app
-
-# Set working directory
-WORKDIR /app
+# Copy project code
+COPY . . 
 
 # Expose port 5000
 EXPOSE 5000
