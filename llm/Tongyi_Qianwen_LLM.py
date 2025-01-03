@@ -40,6 +40,8 @@ class ContentGenerate:
             return result
         except Exception as e:
             print(f'error: {e}')
+            print('Please check your Alibaba Cloud Tongyi Qianwen API Key or Download location Ollama models')
+            print('Please check the API Key and Base URL')
             return ""
 
     def ollama_content(self,
