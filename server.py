@@ -31,7 +31,7 @@ def deal_audio():
         return jsonify({'error': 'No text provided'}), 400
 
     print("Thinking...")
-    content = content_generator.generate_content(text)
+    content = content_generator.ollama_content(text)
     print(content)
 
     try:
