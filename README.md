@@ -2,6 +2,8 @@
 
 [![GitHub Release](https://img.shields.io/github/v/release/toke648/AI-Interactive-LLM-VTuber)](https://github.com/toke648/AI-Interactive-LLM-VTuber/releases)
 [![license](https://img.shields.io/github/license/toke648/Interactive-LLM-VTuber)](https://github.com/toke648/Interactive-LLM-VTuber/main/LICENSE) 
+[![](https://img.shields.io/badge/toke648%2FInteractive--LLM--VTuber-%25230db7ed.svg?logo=docker&logoColor=blue&labelColor=white&color=blue)](https://hub.docker.com/r/toke648/interactive-llm-vtuber) 
+
 
 ## What is this project
 This project is a virtual VTuber interactive model. Currently, it supports basic functionalities like speech input, text generation, and voice output. Additionally, it includes features such as long-term memory, image recognition, and emotion analysis, which are under active development. The next phase of the project involves local deployment, deep reinforcement learning, integration, framework enhancement, and embedded system implementation.
@@ -44,7 +46,7 @@ It's recommended to use a virtual environment to keep the dependencies isolated.
       ```
    - On Linux/macOS:
       ```sh
-      source venv/bin/activate
+      source vtuber/bin/activate
       ```
 
 #### Use the requirements. txt file to install the required dependencies:
