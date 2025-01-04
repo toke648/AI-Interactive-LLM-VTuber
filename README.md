@@ -95,29 +95,3 @@ If you no longer need the container, you can remove it with:
 docker rm vtuber
 ```
 ## Mem0/Long Memory (In Development)
-
-## Project Structure
-
-```
-2025/01/02  00:19    <DIR>          .
-2025/01/02  00:10    <DIR>          ..
-2025/01/02  00:11    <DIR>          .idea
-2025/01/02  00:11    <DIR>          audio
-2025/01/01  20:23               761 config.yaml
-2025/01/02  00:11    <DIR>          data
-2025/01/02  00:06             1,781 dockerfile
-2025/01/01  16:05             1,064 LICENSE
-2025/01/02  00:11    <DIR>          llm
-2025/01/02  00:15             2,078 main_setting.py
-2025/01/02  00:21             1,037 README.md
-2025/01/02  00:18               174 requirements.txt
-2025/01/01  17:40           191,857 Screenshot 2025-01-01 174024-demo.png
-2025/01/01  20:19             1,532 server.py
-2025/01/02  00:11    <DIR>          static
-2025/01/02  00:11    <DIR>          stt
-2025/01/02  00:11    <DIR>          templates
-2025/01/02  00:11    <DIR>          text_program
-2025/01/02  00:11    <DIR>          translate
-2025/01/02  00:11    <DIR>          tts
-2025/01/02  00:11    <DIR>          __pycache__
-```
