@@ -4,6 +4,8 @@
 [![license](https://img.shields.io/github/license/toke648/Interactive-LLM-VTuber)](https://github.com/toke648/Interactive-LLM-VTuber/main/LICENSE) 
 [![](https://img.shields.io/badge/toke648%2FInteractive--LLM--VTuber-%25230db7ed.svg?logo=docker&logoColor=blue&labelColor=white&color=blue)](https://hub.docker.com/r/toke648/interactive-llm-vtuber) 
 
+[![](https://dcbadge.limes.pink/api/server/u5BsCFWEvW)](https://discord.gg/u5BsCFWEvW)
+
 **English** | [**简体中文**](cn-README.md)
 
 ## What is this project
