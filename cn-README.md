@@ -4,7 +4,7 @@
 [![license](https://img.shields.io/github/license/toke648/Interactive-LLM-VTuber)](https://github.com/toke648/Interactive-LLM-VTuber/main/LICENSE) 
 [![](https://img.shields.io/badge/toke648%2FInteractive--LLM--VTuber-%25230db7ed.svg?logo=docker&logoColor=blue&labelColor=white&color=blue)](https://hub.docker.com/r/toke648/interactive-llm-vtuber)
 
-[**English**](README.md) | [**简体中文**](cn-README.md)
+[**English**](README.md) | **简体中文**
 
 ## 项目简介
 这是一个虚拟主播互动模型项目。目前支持语音输入、文本生成和语音输出等基本功能。此外，项目还包括正在开发中的长期记忆、图像识别和情感分析等功能。项目的下一阶段将涉及本地部署、深度强化学习、集成、框架增强和嵌入式系统实现。
