@@ -88,8 +88,10 @@ class ContentGenerate:
             )
 
             deepseek_message = completion.choices[0].message.content
+            self.content_history.append({'role': 'assistant', 'content': deepseek_message})
 
             return deepseek_message
+        
         except Exception as e:
             print(f'Error {e}')
             return ''
