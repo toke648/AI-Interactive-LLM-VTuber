@@ -1,5 +1,5 @@
 import os
-import yaml
+# import yaml
 
 # Setting class
 class MainSetting():
@@ -47,7 +47,7 @@ class MainSetting():
         self.openai_api_key = "your_api_key"
         self.openai_base_url = "your_base_url"
 
-        self.models = "qwen-plus"
+        self.models = "deepseek-chat"
 
     # STT Setting
     def load_audio_path(self):

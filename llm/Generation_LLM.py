@@ -68,9 +68,31 @@ class ContentGenerate:
         except Exception as e:
             print(f'Error {e}')
             return ''
+    
+    def deepseek_content(self,
+                         content: str
+                         ) -> str:
+        try:
+            self.content_history.append({'role': 'user', 'content': content})
+            pd.DataFrame(self.content_history)
 
+            client = OpenAI(
+                api_key=self.settings.openai_api_key,
+                base_url="https://api.deepseek.com",
+            )
 
+            completion = client.chat.completions.create(
+                model="deepseek-chat",
+                messages=self.content_history,
+                stream=False # stream is False by default
+            )
 
+            deepseek_message = completion.choices[0].message.content
+
+            return deepseek_message
+        except Exception as e:
+            print(f'Error {e}')
+            return ''
 
 
 

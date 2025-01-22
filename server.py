@@ -1,6 +1,6 @@
 from flask import Flask, jsonify, request, redirect, url_for, send_from_directory
-from llm import Tongyi_Qianwen_LLM
-from tts import generate_audio
+from llm import Generation_LLM
+from tts import Generation_Audio
 from main_setting import MainSetting
 from flask_cors import CORS
 import asyncio
@@ -8,8 +8,8 @@ import os
 
 # Main Program Interface
 settings = MainSetting()
-speech_generator = generate_audio.SpeechGenerator()
-content_generator = Tongyi_Qianwen_LLM.ContentGenerate()
+speech_generator = Generation_Audio.SpeechGenerator()
+content_generator = Generation_LLM.ContentGenerate()
 app = Flask(__name__)
 CORS(app, resources={r"/*": {"origins": "*"}})
 
@@ -31,7 +31,7 @@ def deal_audio():
         return jsonify({'error': 'No text provided'}), 400
 
     print("Thinking...")
-    content = content_generator.ollama_content(text)
+    content = content_generator.deepseek_content(text)
     print(content)
 
     try:
