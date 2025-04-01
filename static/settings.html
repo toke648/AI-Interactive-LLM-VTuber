@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>配置设置</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        .container { max-width: 800px; margin-top: 30px; }
+        .card { margin-bottom: 20px; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2 class="text-center mb-4">系统配置</h2>
+        
+        <div class="card">
+            <div class="card-header">TTS 配置</div>
+            <div class="card-body">
+                <div class="mb-3">
+                    <label class="form-label">语音</label>
+                    <select class="form-select" id="default_voice">
+                            <option value="zh-HK-HiuGaaiNeural">zh-HK-HiuGaaiNeural</option>
+                            <option value="zh-HK-HiuMaanNeural">zh-HK-HiuMaanNeural</option>
+                            <option value="zh-HK-WanLungNeural">zh-HK-WanLungNeural</option>
+                            <option value="zh-CN-XiaoxiaoNeural">zh-CN-XiaoxiaoNeural</option>
+                            <option value="zh-CN-XiaoyiNeural">zh-CN-XiaoyiNeural</option>
+                            <option value="zh-CN-YunjianNeural">zh-CN-YunjianNeural</option>
+                            <option value="zh-CN-YunxiNeural">zh-CN-YunxiNeural</option>
+                            <option value="zh-CN-YunxiaNeural">zh-CN-YunxiaNeural</option>
+                            <option value="zh-CN-YunyangNeural">zh-CN-YunyangNeural</option>
+                            <option value="zh-CN-liaoning-XiaobeiNeural">zh-CN-liaoning-XiaobeiNeural</option>
+                            <option value="zh-TW-HsiaoChenNeural">zh-TW-HsiaoChenNeural</option>
+                            <option value="zh-TW-YunJheNeural">zh-TW-YunJheNeural</option>
+                            <option value="zh-TW-HsiaoYuNeural">zh-TW-HsiaoYuNeural</option>
+                            <option value="zh-CN-shaanxi-XiaoniNeural">zh-CN-shaanxi-XiaoniNeural</option>
+                            <option value="en-AU-NatashaNeural">en-AU-NatashaNeural</option>
+                            <option value="en-AU-WilliamNeural">en-AU-WilliamNeural</option>
+                            <option value="en-CA-ClaraNeural">en-CA-ClaraNeural</option>
+                            <option value="en-CA-LiamNeural">en-CA-LiamNeural</option>
+                            <option value="en-HK-YanNeural">en-HK-YanNeural</option>
+                            <option value="en-HK-SamNeural">en-HK-SamNeural</option>
+                            <option value="en-IN-NeerjaExpressiveNeural">en-IN-NeerjaExpressiveNeural</option>
+                            <option value="en-IN-NeerjaNeural">en-IN-NeerjaNeural</option>
+                            <option value="en-IN-PrabhatNeural">en-IN-PrabhatNeural</option>
+                            <option value="en-IE-ConnorNeural">en-IE-ConnorNeural</option>
+                            <option value="en-IE-EmilyNeural">en-IE-EmilyNeural</option>
+                            <option value="en-KE-AsiliaNeural">en-KE-AsiliaNeural</option>
+                            <option value="en-KE-ChilembaNeural">en-KE-ChilembaNeural</option>
+                            <option value="en-NZ-MitchellNeural">en-NZ-MitchellNeural</option>
+                            <option value="en-NZ-MollyNeural">en-NZ-MollyNeural</option>
+                            <option value="en-NG-AbeoNeural">en-NG-AbeoNeural</option>
+                            <option value="en-NG-EzinneNeural">en-NG-EzinneNeural</option>
+                            <option value="en-PH-JamesNeural">en-PH-JamesNeural</option>
+                            <option value="en-PH-RosaNeural">en-PH-RosaNeural</option>
+                            <option value="en-US-AvaNeural">en-US-AvaNeural</option>
+                            <option value="en-US-AndrewNeural">en-US-AndrewNeural</option>
+                            <option value="en-US-EmmaNeural">en-US-EmmaNeural</option>
+                            <option value="en-US-BrianNeural">en-US-BrianNeural</option>
+                            <option value="en-SG-LunaNeural">en-SG-LunaNeural</option>
+                            <option value="en-SG-WayneNeural">en-SG-WayneNeural</option>
+                            <option value="en-ZA-LeahNeural">en-ZA-LeahNeural</option>
+                            <option value="en-ZA-LukeNeural">en-ZA-LukeNeural</option>
+                            <option value="en-TZ-ElimuNeural">en-TZ-ElimuNeural</option>
+                            <option value="en-TZ-ImaniNeural">en-TZ-ImaniNeural</option>
+                            <option value="en-GB-LibbyNeural">en-GB-LibbyNeural</option>
+                            <option value="en-GB-MaisieNeural">en-GB-MaisieNeural</option>
+                            <option value="en-GB-RyanNeural">en-GB-RyanNeural</option>
+                            <option value="en-GB-SoniaNeural">en-GB-SoniaNeural</option>
+                            <option value="en-GB-ThomasNeural">en-GB-ThomasNeural</option>
+                            <option value="en-US-AnaNeural">en-US-AnaNeural</option>
+                            <option value="en-US-AndrewMultilingualNeural">en-US-AndrewMultilingualNeural</option>
+                            <option value="en-US-AriaNeural">en-US-AriaNeural</option>
+                            <option value="en-US-AvaMultilingualNeural">en-US-AvaMultilingualNeural</option>
+                            <option value="en-US-BrianMultilingualNeural">en-US-BrianMultilingualNeural</option>
+                            <option value="en-US-ChristopherNeural">en-US-ChristopherNeural</option>
+                            <option value="en-US-EmmaMultilingualNeural">en-US-EmmaMultilingualNeural</option>
+                            <option value="en-US-EricNeural">en-US-EricNeural</option>
+                            <option value="en-US-GuyNeural">en-US-GuyNeural</option>
+                            <option value="en-US-JennyNeural">en-US-JennyNeural</option>
+                            <option value="en-US-MichelleNeural">en-US-MichelleNeural</option>
+                            <option value="en-US-RogerNeural">en-US-RogerNeural</option>
+                            <option value="en-US-SteffanNeural">en-US-SteffanNeural</option>
+                            <option value="ja-JP-KeitaNeural">ja-JP-KeitaNeural</option>
+                            <option value="ja-JP-NanamiNeural">ja-JP-NanamiNeural</option>
+                            <option value="es-AR-ElenaNeural">es-AR-ElenaNeural</option>
+                            <option value="es-AR-TomasNeural">es-AR-TomasNeural</option>
+                            <option value="es-BO-MarceloNeural">es-BO-MarceloNeural</option>
+                            <option value="es-BO-SofiaNeural">es-BO-SofiaNeural</option>
+                            <option value="es-CL-CatalinaNeural">es-CL-CatalinaNeural</option>
+                            <option value="es-CL-LorenzoNeural">es-CL-LorenzoNeural</option>
+                            <option value="es-CO-GonzaloNeural">es-CO-GonzaloNeural</option>
+                            <option value="es-CO-SalomeNeural">es-CO-SalomeNeural</option>
+                            <option value="es-ES-XimenaNeural">es-ES-XimenaNeural</option>
+                            <option value="es-CR-JuanNeural">es-CR-JuanNeural</option>
+                            <option value="es-CR-MariaNeural">es-CR-MariaNeural</option>
+                            <option value="es-CU-BelkysNeural">es-CU-BelkysNeural</option>
+                            <option value="es-CU-ManuelNeural">es-CU-ManuelNeural</option>
+                            <option value="es-DO-EmilioNeural">es-DO-EmilioNeural</option>
+                            <option value="es-DO-RamonaNeural">es-DO-RamonaNeural</option>
+                            <option value="es-EC-AndreaNeural">es-EC-AndreaNeural</option>
+                            <option value="es-EC-LuisNeural">es-EC-LuisNeural</option>
+                            <option value="es-SV-LorenaNeural">es-SV-LorenaNeural</option>
+                            <option value="es-SV-RodrigoNeural">es-SV-RodrigoNeural</option>
+                            <option value="es-GQ-JavierNeural">es-GQ-JavierNeural</option>
+                            <option value="es-GQ-TeresaNeural">es-GQ-TeresaNeural</option>
+                            <option value="es-GT-AndresNeural">es-GT-AndresNeural</option>
+                            <option value="es-GT-MartaNeural">es-GT-MartaNeural</option>
+                            <option value="es-HN-CarlosNeural">es-HN-CarlosNeural</option>
+                            <option value="es-HN-KarlaNeural">es-HN-KarlaNeural</option>
+                            <option value="es-MX-DaliaNeural">es-MX-DaliaNeural</option>
+                            <option value="es-MX-JorgeNeural">es-MX-JorgeNeural</option>
+                            <option value="es-NI-FedericoNeural">es-NI-FedericoNeural</option>
+                            <option value="es-NI-YolandaNeural">es-NI-YolandaNeural</option>
+                            <option value="es-PA-MargaritaNeural">es-PA-MargaritaNeural</option>
+                            <option value="es-PA-RobertoNeural">es-PA-RobertoNeural</option>
+                            <option value="es-PY-MarioNeural">es-PY-MarioNeural</option>
+                            <option value="es-PY-TaniaNeural">es-PY-TaniaNeural</option>
+                            <option value="es-PE-AlexNeural">es-PE-AlexNeural</option>
+                            <option value="es-PE-CamilaNeural">es-PE-CamilaNeural</option>
+                            <option value="es-PR-KarinaNeural">es-PR-KarinaNeural</option>
+                            <option value="es-PR-VictorNeural">es-PR-VictorNeural</option>
+                            <option value="es-ES-AlvaroNeural">es-ES-AlvaroNeural</option>
+                            <option value="es-ES-ElviraNeural">es-ES-ElviraNeural</option>
+                            <option value="es-US-AlonsoNeural">es-US-AlonsoNeural</option>
+                            <option value="es-US-PalomaNeural">es-US-PalomaNeural</option>
+                            <option value="es-UY-MateoNeural">es-UY-MateoNeural</option>
+                            <option value="es-UY-ValentinaNeural">es-UY-ValentinaNeural</option>
+                            <option value="es-VE-PaolaNeural">es-VE-PaolaNeural</option>
+                            <option value="es-VE-SebastianNeural">es-VE-SebastianNeural</option>
+                    </select>
+                </div>
+                <div class="mb-3">
+                    <label class="form-label">语速</label>
+                    <input type="text" class="form-control" id="default_rate" placeholder="例如: -5%">
+                </div>
+                <div class="mb-3">
+                    <label class="form-label">音量</label>
+                    <input type="text" class="form-control" id="default_volume" placeholder="例如: +50%">
+                </div>
+            </div>
+        </div>
+
+        <div class="card">
+            <div class="card-header">LLM 配置</div>
+            <div class="card-body">
+                <div class="mb-3">
+                    <label class="form-label">API Key</label>
+                    <input type="text" class="form-control" id="openai_api_key">
+                </div>
+                <div class="mb-3">
+                    <label class="form-label">Base URL</label>
+                    <input type="text" class="form-control" id="openai_base_url">
+                </div>
+                <div class="mb-3">
+                    <label class="form-label">模型</label>
+                    <input type="text" class="form-control" id="models">
+                </div>
+            </div>
+        </div>
+
+        <div class="text-center">
+            <button class="btn btn-primary" onclick="saveSettings()">保存设置</button>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        // 加载配置
+        async function loadSettings() {
+            try {
+                const response = await fetch('/settings');
+                const config = await response.json();
+                
+                // 设置TTS配置
+                document.getElementById('default_voice').value = config.tts.default_voice;
+                document.getElementById('default_rate').value = config.tts.default_rate;
+                document.getElementById('default_volume').value = config.tts.default_volume;
+                
+                // 设置LLM配置
+                document.getElementById('openai_api_key').value = config.llm.openai_api_key;
+                document.getElementById('openai_base_url').value = config.llm.openai_base_url;
+                document.getElementById('models').value = config.llm.models;
+            } catch (error) {
+                console.error('加载配置失败:', error);
+                alert('加载配置失败');
+            }
+        }
+
+        // 保存配置
+        async function saveSettings() {
+            const config = {
+                tts: {
+                    default_voice: document.getElementById('default_voice').value,
+                    default_rate: document.getElementById('default_rate').value,
+                    default_volume: document.getElementById('default_volume').value
+                },
+                llm: {
+                    openai_api_key: document.getElementById('openai_api_key').value,
+                    openai_base_url: document.getElementById('openai_base_url').value,
+                    models: document.getElementById('models').value
+                }
+            };
+
+            try {
+                const response = await fetch('/settings', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify(config)
+                });
+
+                const result = await response.json();
+                if (response.ok) {
+                    alert('配置保存成功');
+                } else {
+                    throw new Error(result.error || '保存失败');
+                }
+            } catch (error) {
+                console.error('保存配置失败:', error);
+                alert('保存配置失败: ' + error.message);
+            }
+        }
+
+        // 页面加载时获取配置
+        document.addEventListener('DOMContentLoaded', loadSettings);
+    </script>
+</body>
+</html>

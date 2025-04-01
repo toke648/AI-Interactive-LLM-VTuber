@@ -1,0 +1,22 @@
+{
+    "path": {
+        "audio_directory": "audio",
+        "audio_file": "output.mp3"
+    },
+    "tts": {
+        "default_voice": "en-US-AvaNeural",
+        "default_rate": "-5%",
+        "default_volume": "+50%"
+    },
+    "llm": {
+        "system_prompt_file": "templates/ai_setting_VTuber-Neuro sama.txt",
+        "openai_api_key": "63f72c10e53241509645b29dfc5f06c8.x0RKmLAYwR7uJMsr",
+        "openai_base_url": "https://open.bigmodel.cn/api/paas/v4/",
+        "models": "GLM-4-Flash"
+    },
+    "sst": {
+        "default_language": "zh-CN",
+        "default_rate": "-5%",
+        "default_volume": "+50%"
+    }
+}

@@ -1,5 +1,5 @@
 from language_generate import large_language_model
-from tts import speech_generation_model
+from tts_speech import speech_edge_tts
 from audio_record import record
 from playsound import playsound
 import pandas as pd
@@ -14,8 +14,9 @@ def main():
 
         # Generate speech
         # Play audio file
-        audio_file_path = r"audio\output.mp3"
-        asyncio.run(speech_generation_model(response, audio_file_path))
+        audio_file_path = "audio/output.mp3"
+        voice = 'zh-CN-XiaoxiaoNeural'
+        asyncio.run(speech_edge_tts(response, audio_file_path, voice))
         playsound(audio_file_path)
     except Exception as e:
         print(f'Error playing audio: {e}')
@@ -23,7 +24,7 @@ def main():
 
 if __name__ == '__main__':
     # You can set Initial Setting of AI
-    setting = open('ai_setting_VTuber-Neuro sama.txt', 'r').read()
+    setting = open('text_program/ai_setting_VTuber-Neuro sama.txt', 'r', encoding="utf-8").read()
 
     # You can use dictionary to show it
     conversation_history = [

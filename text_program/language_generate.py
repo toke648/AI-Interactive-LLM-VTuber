@@ -7,15 +7,15 @@ def large_language_model(content,conversation_history, retries=3):
     conversation_history.append({'role': 'user', 'content': content})
 
     client = OpenAI(
-        api_key="your_api_key",
-        base_url="your_base_url",
+                api_key="63f72c10e53241509645b29dfc5f06c8.x0RKmLAYwR7uJMsr",
+                base_url="https://open.bigmodel.cn/api/paas/v4/",
     )
 
     # Requesting completion from the conversation history
     for attempt in range(retries):
         try:
             completion = client.chat.completions.create(
-                model="qwen-plus",
+                model="GLM-4-Flash",
                 messages=conversation_history
             )
             qwen_plus = completion.model_dump_json()

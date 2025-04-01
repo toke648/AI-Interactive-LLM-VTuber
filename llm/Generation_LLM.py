@@ -19,7 +19,7 @@ class ContentGenerate:
 
             client = OpenAI(
                 api_key=self.settings.openai_api_key,
-                base_url=self.settings.openai_base_url,
+                base_url="https://dashscope.aliyuncs.com/compatible-mode/v1",
             )
 
             # Requesting completion from the conversation history
@@ -58,7 +58,7 @@ class ContentGenerate:
             )
 
             completion = client.chat.completions.create(
-                model="qwen2.5:7b",  # model list: https://help.aliyun.com/zh/model-studio/getting-started/models
+                model=self.settings.models,  # model list: https://help.aliyun.com/zh/model-studio/getting-started/models
                 messages=self.content_history
             )
 
@@ -82,7 +82,7 @@ class ContentGenerate:
             )
 
             completion = client.chat.completions.create(
-                model="deepseek-chat",
+                model=self.settings.models,
                 messages=self.content_history,
                 stream=False # stream is False by default
             )
@@ -95,7 +95,24 @@ class ContentGenerate:
         except Exception as e:
             print(f'Error {e}')
             return ''
-
-
-
-
+        
+    def zhipuai_content(self,
+                         content: str
+                         ) -> str:
+        try:
+            self.content_history.append({'role': 'user', 'content': content})
+            pd.DataFrame(self.content_history)
+            client = OpenAI(
+                api_key="63f72c10e53241509645b29dfc5f06c8.x0RKmLAYwR7uJMsr",
+                base_url="https://open.bigmodel.cn/api/paas/v4/",
+            )
+            completion = client.chat.completions.create(
+                model="GLM-4-Flash",
+                messages=self.content_history
+            )
+            zhipuai_message = completion.choices[0].message.content
+            self.content_history.append({'role': 'assistant', 'content': zhipuai_message})
+            return zhipuai_message
+        except Exception as e:
+            print(f'Error {e}')
+            return ''

@@ -1,10 +1,8 @@
 import edge_tts
-
 # Asynchronous function for speech generation
-async def speech_generation_model(response, output):
-    text = response
+async def speech_edge_tts(text: str, path: str, speech_language: str) -> None:
     # Change voice as needed
-    voice = 'en-US-AvaNeural'
+    # voice = 'en-US-AvaNeural'
     # voice = 'ja-JP-NanamiNeural'
     # voice = 'zh-CN-XiaoxiaoNeural'
     rate = '-5%'
@@ -12,11 +10,14 @@ async def speech_generation_model(response, output):
 
     try:
         communicate = edge_tts.Communicate(text=text,
-                                   voice=voice,
+                                   voice=speech_language,
                                    rate=rate,
                                    volume=volume,)
-        await communicate.save(output)
+        await communicate.save(path)
     except Exception as e:
         print(f'Error during speech generation: {e}')
 
-    # print(edge_tts.voices)
+
+
+
+

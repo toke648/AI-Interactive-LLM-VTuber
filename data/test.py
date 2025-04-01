@@ -402,7 +402,7 @@ import json
 # Function to get response from the language model
 def large_language_model(content, retries=3):
     client = OpenAI(
-        api_key="sk-707613869ffe4b06b165e396e580f847",
+        api_key="sk-59fab50bf3304b12ac5ef42dda9ddf3f",
         base_url="https://dashscope.aliyuncs.com/compatible-mode/v1",
     )
 
@@ -428,7 +428,7 @@ def large_language_model(content, retries=3):
 async def speech_generation_model(response):
     text = response
     voice = 'en-US-AvaNeural'  # Change voice as needed
-    output = r'C:\Users\16673\Desktop\yuyin4.mp3'
+    output = "./output.mp3"
     rate = '-10%'
     volume = '+50%'
 
@@ -436,8 +436,7 @@ async def speech_generation_model(response):
         tts = edge_tts.Communicate(text=text,
                                    voice=voice,
                                    rate=rate,
-                                   volume=volume,
-                                   proxy='http://127.0.0.1:7897')
+                                   volume=volume,)
         await tts.save(output)
     except Exception as e:
         print(f'Error during speech generation: {e}')
@@ -473,7 +472,7 @@ if __name__ == '__main__':
                 asyncio.run(speech_generation_model(response))
 
                 # Play audio file
-                audio_file_path = "C:/Users/16673/Desktop/audio.mp3"
+                audio_file_path = "./output.mp3"
                 playsound(audio_file_path)
                 print(conversation_history)
             except Exception as e:

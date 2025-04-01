@@ -1,4 +1,5 @@
 edge_tts
+flask-cors
 Flask
 openai
 pandas

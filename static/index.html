@@ -16,22 +16,57 @@
     <script type="text/javascript" src="js/appserver.js"></script>
     <link rel="stylesheet" href="css/style.css">
     <link rel="shortcut icon" href="./bitbug_favicon.ico" type="image/xicon">
+    <style>
+        #body {
+            position: fixed; /* Fixed position */
+            display: flex; /* Use flexbox for centering */
+            top: 50px;
+            left: 50px;
+            color: #ffffff;
+            font-size: 18px;
+        }
+        #canvas {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1; /* Set z-index to -1 to place it behind other elements */
+            /* 居中显示 */
+            margin: auto;
+        }
+        #control {
+            position: absolute;
+        }
+        #control a{
+            color: #ffffff;
+            text-decoration: none; /* 去除下划线 */
+            font-size: 18px;
+        }
+
+    </style>
 </head>
 
 <body>
     <canvas id=canvas></canvas>
+
     <div id="control">
-        <div class="label">1.Test talk</div>
+        <a href="settings.html"><button>Setting</button></a>
+        <br/><br/>
+
+        <div class="label">
+            1.Test talk
+        </div>
+
         <button id="play">Test audio</button>
+
         <br/><br/>
         <div class="label">2. Call the interface to generate audio</div>
         <textarea id="text" style="width:400px;height:300px;"></textarea>
-        <br/><br/>
+        <br><br/>
         <button id="start">Start talking</button>
 
     </div>
-
-
 
 </body>
 </html>
