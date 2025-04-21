@@ -2,10 +2,7 @@
 document.addEventListener("DOMContentLoaded", () => {
 
     // 数字人模型
-    const cubism4Model = "./live2d/Hiyori/Hiyori.model3.json";
-    // const cubism4Model = "./live2d/ariu/ariu.model3.json";
-    // const cubism4Model = "./live2d/mianfeimox/llny.model3.json";
-    // const cubism4Model = "./live2d/cutegirl/cutegirl.model3.json"
+    const cubism4Model = "./live2d/ariu/ariu.model3.json";
 
     const live2d = PIXI.live2d;
     (async function main() {
