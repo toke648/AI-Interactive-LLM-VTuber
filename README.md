@@ -1,101 +1,126 @@
 # Interactive-LLM-VTuber
 
 [![GitHub Release](https://img.shields.io/github/v/release/toke648/AI-Interactive-LLM-VTuber)](https://github.com/toke648/AI-Interactive-LLM-VTuber/releases)
-[![license](https://img.shields.io/github/license/toke648/Interactive-LLM-VTuber)](https://github.com/toke648/Interactive-LLM-VTuber/main/LICENSE) 
+[![license](https://img.shields.io/github/license/toke648/Interactive-LLM-VTuber)](https://github.com/toke648/Interactive-LLM-VTuber/main/LICENSE)
 [![](https://img.shields.io/badge/toke648%2FInteractive--LLM--VTuber-%25230db7ed.svg?logo=docker&logoColor=blue&labelColor=white&color=blue)](https://hub.docker.com/r/toke648/interactive-llm-vtuber)
 
-[![Discord](https://img.shields.io/badge/Discord-7289DA?style=for-the-badge&logo=discord&logoColor=white)](https://discord.gg/kwCY2wFPNh)
+**English** | [**简体中文**](./README_zh.md)
 
+## Project Overview
 
-**English** | [**简体中文**](cn-README.md)
+**Interactive-LLM-VTuber** is an innovative platform for interactive virtual streamers, leveraging advanced AI technologies to deliver an immersive user experience. The project supports voice input, text generation, and voice output, with high scalability. Currently in development are features like long-term memory, image recognition, and sentiment analysis. Future plans include local deployment, deep reinforcement learning, system integration, framework optimization, and embedded device support to build an intelligent VTuber ecosystem.
 
-## What is this project
-This project is a virtual VTuber interactive model. Currently, it supports basic functionalities like speech input, text generation, and voice output. Additionally, it includes features such as long-term memory, image recognition, and emotion analysis, which are under active development. The next phase of the project involves local deployment, deep reinforcement learning, integration, framework enhancement, and embedded system implementation.
+## Feature Highlights
 
-## Demo (In Progress)
-![Demo Screenshot](Screenshot%202025-01-01%20174024-demo.png)
+- **Real-time Voice Interaction**: Enables natural language input via automatic speech recognition (ASR).
+- **Intelligent Conversation**: Supports multiple large language models (LLMs), including Tongyi Qianwen, Deepseek (online), and Ollama2.5:7b (local offline).
+- **Speech Synthesis**: Utilizes Edge-TTS for smooth text-to-speech output.
+- **Dynamic Front-end**: Built with Flask, HTML, JavaScript, and CSS for an intuitive user interface.
+- **Modular Design**: Facilitates feature expansion and third-party integration.
 
-## Constructed by
+## Demo
 
-- **Python**
-- **Speech Recognition (ASR):** `speech_recognition`
-- **Large Language Model (LLM):** Tongyi Qianwen
-- **Text-to-Speech (TTS):** `edge-tts`
+![Demo screenshot](Screenshot%202025-01-01%20174024-demo.png)
 
-## Target Platforms
+*Showcasing real-time interaction with the VTuber model.*
 
-- **Windows**
-- **Linux** (Not tested, but should be compatible)
+## Technology Stack
 
-## How to work it
+- **Programming Language**: Python
+- **Speech Recognition (ASR)**: `speech_recognition` (online)
+- **Large Language Models (LLMs)**:
+  - Tongyi Qianwen (online)
+  - Deepseek (online)
+  - Ollama2.5:7b (local offline)
+- **Text-to-Speech (TTS)**: `edge-tts` (online)
+- **Front-end and Back-end Interaction**: Flask + HTML + JavaScript + CSS
 
-Download and install either **VSCode** or **PyCharm**.
-Navigate to the project directory and run the following command to install dependencies:
+*Note*: Some models may require specific configurations for compatibility.
 
-It's recommended to use a virtual environment to keep the dependencies isolated.
+## Supported Platforms
 
-### Open a terminal/command prompt and navigate to the project directory.
+- **Windows**: Fully tested and stable.
+- **Linux**: Theoretically compatible (testing recommended).
 
-### Create a virtual environment by running the following command:
+## Installation and Use
+
+### Prerequisites
+
+- Install **VSCode** or **PyCharm**.
+- Install **Python 3.11** interpreter.
+- (Optional) Use a virtual environment to isolate dependencies.
+
+### Steps
+
+1. **Clone the project and enter the directory**:
 
    ```sh
-   python -m venv vtuber
+   git clone https://github.com/toke648/AI-Interactive-LLM-VTuber.git
+   cd AI-Interactive-LLM-VTuber
    ```
 
-### Activate the virtual environment:
-   - On Windows:
+2. **Create and activate a virtual environment**:
 
-      ```sh
-      vtubre\Scripts\activate
-      ```
-   - On Linux/macOS:
-      ```sh
-      source vtuber/bin/activate
-      ```
+   - Windows:
 
-#### Use the requirements. txt file to install the required dependencies:
+     ```sh
+     python -m venv vtuber
+     vtuber\Scripts\activate
+     ```
+
+   - Conda Environment:
+     ```sh
+     conda create -n vtuber python=3.11
+     conda activate vtuber
+     ```
+
+   - Linux/macOS:
+
+     ```sh
+     python -m venv vtuber
+     source vtuber/bin/activate
+     ```
+
+3. **Install dependencies**:
+
    ```sh
    pip install -r requirements.txt
    ```
-### Run the server.py file
+
+4. **Configure API**:
+
+   - Edit `mainsetting.py` to configure API keys (e.g., for Tongyi Qianwen or Ollama) and other settings.
+
+5. **Start the project**:
+
    ```sh
    python server.py
    ```
- ### Additional Notes
-You can change the port or other configurations in the main_setting.py file.
-- Ensure that any environment variables like API keys are set correctly, especially for LLM integration.
-- If you're using  **Alibaba Cloud Tongyi Qianwen API Key** or **Ollama models**, make sure to properly configure them in code.
 
-## Using the Dockerfile
+   Or use the one-click startup script (Windows):
 
-### Prerequisites
-- Install [Docker](https://www.docker.com/) on your system.
-
-### Building the Docker Image
-1. Navigate to the project directory containing the `dockerfile`.
-2. Build the Docker image with the following command:
    ```sh
-   docker build -t interactive-llm-vtuber .
+   setup.bat
    ```
 
-### Running the Docker Container
-1. Start a container using the built image:
-   ```sh
-   docker run -d -p 5000:5000 --name vtuber interactive-llm-vtuber
-   ```
-   This maps port 5000 on your host machine to the container, where the application will be accessible.
+### Other Configurations
 
-2. Access the application by visiting `http://localhost:5000` in your browser.
+- **Port Modification**: Adjust the port or other settings in `mainsetting.py`.
+- **Model Switching**: Modify the `cubism4Model` variable in `static/js/appserver.js` to switch VTuber models (not yet integrated into the UI).
+- **System Settings**: Access the configuration page via the “Settings” button in the UI. Restart the project to apply changes.
 
-### Stopping the Container
-To stop the container, run:
-```sh
-docker stop vtuber
-```
+## Update Log (Version 0.4.0)
 
-### Removing the Container
-If you no longer need the container, you can remove it with:
-```sh
-docker rm vtuber
-```
-## Mem0/Long Memory (In Development)
+1. **One-click Startup**: Added `setup.bat` script to simplify the startup process for Windows users.
+2. **Model Switching**: Supports manual VTuber model switching by modifying the path in `static/js/appserver.js`.
+3. **System Configuration Page**: Added a settings interface, accessible via the “Settings” button. Restart the project to apply changes.
+
+## Notes
+
+- Ensure API keys and environment variables are correctly configured for LLM and TTS functionality.
+- Linux users may need to verify compatibility. Feedback is welcome via GitHub Issues.
+- The project is actively updated. Follow the GitHub repository for the latest updates.
+
+## License
+
+This project is licensed under the MIT License. Contributions and suggestions are warmly welcomed!
