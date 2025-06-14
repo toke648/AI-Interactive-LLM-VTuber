@@ -11,14 +11,15 @@ class SpeechGenerator:
 
     async def generate_audio(self, text: str):
         try:
-            audio_path = self.settings.load_audio_path()
+            audio_path = self.settings.get_audio_path()
+            print(audio_path)
             os.makedirs(self.settings.audio_directory, exist_ok=True)
 
             communicate = edge_tts.Communicate(
                 text=text,
-                voice=self.settings.default_voice,
-                rate=self.settings.default_rate,
-                volume=self.settings.default_volume,
+                voice=self.settings.tts_voice,
+                rate=self.settings.tts_rate,
+                volume=self.settings.tts_volume,
             )
 
             print(f"Saving audio to {audio_path}")

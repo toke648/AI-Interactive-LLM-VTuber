@@ -5,7 +5,7 @@
     },
     "tts": {
         "default_voice": "en-US-AvaNeural",
-        "default_rate": "15%",
+        "default_rate": "-5%",
         "default_volume": "+50%"
     },
     "llm": {

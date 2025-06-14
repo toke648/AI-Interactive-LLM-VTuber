@@ -1,40 +1,47 @@
 import os
 import json
 
-# Setting class
-class MainSetting():
-    def __init__(self):
-        with open(os.path.join(os.path.dirname(__file__), 'main_setting.json'), 'r', encoding='utf-8') as f:
+class MainSetting:
+    def __init__(self, config_file='main_setting.json'):
+        self.base_path = os.path.dirname(os.path.abspath(__file__))
+        config_path = os.path.join(self.base_path, config_file)
+
+        with open(config_path, 'r', encoding='utf-8') as f:
             config = json.load(f)
 
-            # Path
-            self.audio_directory = config['path']['audio_directory']
-            self.audio_file = config['path']['audio_file']
-            
-            # LLM
-            self.openai_api_key = config['llm']['openai_api_key']
-            self.openai_base_url = config['llm']['openai_base_url']
-            self.models = config['llm']['models']
-            self.path_dir = os.path.dirname(os.path.abspath(__file__))
-            self.system_prompt = open(config['llm']['system_prompt_file'], 'r', encoding='utf-8').read()
+        # Path
+        self.audio_directory = config['path'].get('audio_directory', 'audio')
+        self.audio_file = config['path'].get('audio_file', 'output.mp3')
 
-            # TTS
-            self.default_voice = config['tts']['default_voice']
-            self.default_rate = config['tts']['default_rate']
-            self.default_volume = config['tts']['default_volume']
+        # TTS
+        tts_cfg = config.get('tts', {})
+        self.tts_voice = tts_cfg.get('default_voice', '')
+        self.tts_rate = tts_cfg.get('default_rate', '0%')
+        self.tts_volume = tts_cfg.get('default_volume', '0%')
 
-            # Speech Recognition
+        # STT
+        sst_cfg = config.get('sst', {})
+        self.sst_language = sst_cfg.get('default_language', 'zh-CN')
+        self.sst_rate = sst_cfg.get('default_rate', '0%')
+        self.sst_volume = sst_cfg.get('default_volume', '0%')
 
-    # STT Setting
-    def load_audio_path(self):
-        path = os.path.join(self.audio_directory, self.audio_file)
-        return path
+        # LLM
+        llm_cfg = config.get('llm', {})
+        self.openai_api_key = llm_cfg.get('openai_api_key', '')
+        self.openai_base_url = llm_cfg.get('openai_base_url', '')
+        self.models = llm_cfg.get('models', 'gpt-3.5-turbo')
 
-    # def load_system_prompt(self):
-    #     path = os.path.join(self.path_dir, self.system_prompt)
-    #     return open(path, 'r').read()
+        # System Prompt
+        prompt_path = os.path.join(self.base_path, llm_cfg.get('system_prompt_file', 'system_prompt.txt'))
+        self.system_prompt = self._read_file(prompt_path)
 
-    # def get_content(self):
-    #     content_history = [{'role': 'system', 'content': f'{self.system_prompt}'}]
-    #     return content_history
+    def _read_file(self, path):
+        try:
+            with open(path, 'r', encoding='utf-8') as f:
+                return f.read()
+        except FileNotFoundError:
+            return ''
 
+    def get_audio_path(self):
+        return os.path.join(self.audio_directory, self.audio_file)
+    

@@ -1,5 +1,6 @@
 from main_setting import MainSetting
 from openai import OpenAI
+# from mcp_tool import *
 import pandas as pd
 import json
 
@@ -96,6 +97,7 @@ class ContentGenerate:
             print(f'Error {e}')
             return ''
         
+    
     def zhipuai_content(self,
                          content: str
                          ) -> str:
