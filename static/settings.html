@@ -6,11 +6,32 @@
     <title>配置设置</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
     <style>
-        .container { max-width: 800px; margin-top: 30px; }
-        .card { margin-bottom: 20px; }
+        body {
+            min-height: 100vh;
+            color: #fff;
+            background: linear-gradient(180deg, #0f1020, #16182a);
+        }
+        .topbar {
+            position: sticky; top: 0; z-index: 10;
+            height: 56px; display: flex; align-items: center; justify-content: space-between;
+            padding: 0 16px; background: rgba(0,0,0,0.3); backdrop-filter: blur(6px);
+            border-bottom: 1px solid rgba(255,255,255,0.12);
+        }
+        .topbar a { color: #fff; text-decoration: none; }
+        .container { max-width: 880px; margin-top: 24px; }
+        .card { margin-bottom: 20px; background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.15); }
+        .card-header { background: rgba(255,255,255,0.05); border-bottom: 1px solid rgba(255,255,255,0.1); color: #fff; }
+        .form-control, .form-select { background: rgba(0,0,0,0.2); color: #fff; border: 1px solid rgba(255,255,255,0.2); }
+        .btn-primary { background: linear-gradient(180deg, #3a8ef6, #2f6bdc); border: none; }
+        .btn-primary:hover { filter: brightness(1.05); }
     </style>
 </head>
 <body>
+    <div class="topbar">
+        <div>设置</div>
+        <div><a href="index.html">返回</a></div>
+    </div>
+
     <div class="container">
         <h2 class="text-center mb-4">系统配置</h2>
         
@@ -159,8 +180,30 @@
             </div>
         </div>
 
+        <div class="card">
+            <div class="card-header">外观设置</div>
+            <div class="card-body">
+                <div class="mb-3">
+                    <label class="form-label">背景类型</label>
+                    <select class="form-select" id="background_type">
+                        <option value="color">纯色</option>
+                        <option value="image">图片</option>
+                    </select>
+                </div>
+                <div class="mb-3">
+                    <label class="form-label">背景颜色（如 #101013 或 linear-gradient(...)）</label>
+                    <input type="text" class="form-control" id="background_color" placeholder="#101013">
+                </div>
+                <div class="mb-3">
+                    <label class="form-label">背景图片URL</label>
+                    <input type="text" class="form-control" id="background_image" placeholder="https://.../bg.jpg">
+                </div>
+            </div>
+        </div>
+
         <div class="text-center">
             <button class="btn btn-primary" onclick="saveSettings()">保存设置</button>
+            <div id="saveHint" class="text-success mt-2" style="display:none">配置已保存并应用，无需重启</div>
         </div>
     </div>
 
@@ -181,6 +224,12 @@
                 document.getElementById('openai_api_key').value = config.llm.openai_api_key;
                 document.getElementById('openai_base_url').value = config.llm.openai_base_url;
                 document.getElementById('models').value = config.llm.models;
+
+                // 外观设置
+                const p = config.path || {};
+                document.getElementById('background_type').value = p.background_type || 'color';
+                document.getElementById('background_color').value = p.background_color || '';
+                document.getElementById('background_image').value = p.background_image || '';
             } catch (error) {
                 console.error('加载配置失败:', error);
                 alert('加载配置失败');
@@ -199,6 +248,11 @@
                     openai_api_key: document.getElementById('openai_api_key').value,
                     openai_base_url: document.getElementById('openai_base_url').value,
                     models: document.getElementById('models').value
+                },
+                path: {
+                    background_type: document.getElementById('background_type').value,
+                    background_color: document.getElementById('background_color').value,
+                    background_image: document.getElementById('background_image').value
                 }
             };
 
@@ -213,7 +267,14 @@
 
                 const result = await response.json();
                 if (response.ok) {
-                    alert('配置保存成功');
+                    // 保存后调用热更新，提示无需重启
+                    try { await fetch('/reload_settings', { method: 'POST' }); } catch(e) {}
+                    // 同步一份到 localStorage，通知主页面立即应用
+                    try {
+                        localStorage.setItem('vtuber_bg', JSON.stringify(config.path));
+                    } catch(e) {}
+                    const hint = document.getElementById('saveHint');
+                    if (hint) { hint.style.display = 'block'; setTimeout(()=>{ hint.style.display='none'; }, 2000); }
                 } else {
                     throw new Error(result.error || '保存失败');
                 }

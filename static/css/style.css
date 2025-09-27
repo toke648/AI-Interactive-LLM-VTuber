@@ -1,3 +1,184 @@
+/* GPT风格输入区 */
+.chat-input {
+    position: relative;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    width: 520px;
+    padding: 12px;
+    border-radius: 16px;
+    background: linear-gradient(180deg, rgba(255,255,255,0.06), rgba(255,255,255,0.02));
+    border: 1px solid rgba(255,255,255,0.15);
+    backdrop-filter: blur(6px);
+}
+
+/* 顶部栏与侧栏与底部输入布局 */
+.topbar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 48px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 16px;
+    color: #fff;
+    background: linear-gradient(180deg, rgba(0,0,0,0.4), rgba(0,0,0,0));
+    z-index: 10;
+}
+.topbar-link { color: #fff; text-decoration: none; }
+.sidebar {
+    position: fixed;
+    top: 48px;
+    left: 0;
+    width: 260px;
+    bottom: 96px;
+    color: #fff;
+    background: rgba(0,0,0,0.25);
+    border-right: 1px solid rgba(255,255,255,0.1);
+    overflow: auto;
+    z-index: 5;
+}
+.sidebar-header {
+    padding: 12px 16px;
+    font-weight: bold;
+    border-bottom: 1px solid rgba(255,255,255,0.1);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.clear-history-btn {
+    background: none;
+    border: none;
+    color: #fff;
+    cursor: pointer;
+    font-size: 16px;
+    padding: 4px;
+    border-radius: 4px;
+    transition: background-color 0.2s;
+}
+.clear-history-btn:hover {
+    background: rgba(255,255,255,0.1);
+}
+.history-list { padding: 8px 8px 80px 8px; }
+.history-item {
+    padding: 8px 10px;
+    border-radius: 8px;
+    margin-bottom: 8px;
+    background: rgba(255,255,255,0.08);
+    cursor: pointer;
+}
+.history-item:hover { background: rgba(255,255,255,0.12); }
+
+.bottom-input {
+    position: fixed;
+    left: 0;
+    right: 0;
+    bottom: 24px;
+    display: flex;
+    justify-content: center;
+    z-index: 10;
+}
+.bottom-input .chat-input { width: min(800px, calc(100% - 320px)); margin-left: 280px; }
+
+/* 思考中/加载中 指示 */
+.thinking-chip {
+    position: fixed;
+    bottom: 90px;
+    left: 50%;
+    transform: translateX(-50%);
+    padding: 6px 12px;
+    border-radius: 12px;
+    color: #fff;
+    background: rgba(0,0,0,0.5);
+    border: 1px solid rgba(255,255,255,0.15);
+    display: none;
+    z-index: 12;
+}
+.spinner {
+    width: 14px;
+    height: 14px;
+    border: 2px solid rgba(255,255,255,0.35);
+    border-top-color: #fff;
+    border-radius: 50%;
+    display: inline-block;
+    animation: spin 1s linear infinite;
+    margin-right: 8px;
+}
+@keyframes spin { to { transform: rotate(360deg); } }
+
+.send-button.loading,
+.mic-button.loading {
+    opacity: 0.7;
+    cursor: not-allowed;
+}
+
+.chat-textarea {
+    flex: 1;
+    min-height: 44px;
+    max-height: 200px;
+    resize: vertical;
+    border: none;
+    outline: none;
+    border-radius: 12px;
+    padding: 10px 12px;
+    color: #fff;
+    background: rgba(0,0,0,0.25);
+}
+
+.send-button {
+    height: 40px;
+    padding: 0 16px;
+    border-radius: 12px;
+    border: 1px solid rgba(255,255,255,0.2);
+    background: linear-gradient(180deg, #3a8ef6, #2f6bdc);
+    color: #fff;
+    cursor: pointer;
+}
+.send-button:hover { filter: brightness(1.05); }
+.send-button:active { filter: brightness(0.95); }
+
+.mic-button {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    border: 1px solid rgba(255,255,255,0.25);
+    background: radial-gradient(circle at 30% 30%, rgba(255,255,255,0.25), rgba(0,0,0,0.25));
+    box-shadow: inset 0 0 8px rgba(0,0,0,0.25);
+    cursor: pointer;
+    position: relative;
+}
+.mic-button:hover { filter: grayscale(0.2) brightness(1.05); }
+.mic-button:active { filter: brightness(1.1); }
+.mic-button.active {
+    background: linear-gradient(180deg, #0090ff, #0a68ff);
+    border-color: rgba(0,128,255,0.6);
+}
+
+/* 麦克风图标（CSS绘制） */
+.mic-button::before,
+.mic-button::after {
+    content: "";
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+}
+.mic-button::before {
+    top: 10px;
+    width: 10px;
+    height: 16px;
+    border-radius: 6px;
+    background: #fff;
+}
+.mic-button::after {
+    top: 26px;
+    width: 18px;
+    height: 8px;
+    border-radius: 8px 8px 0 0;
+    border: 2px solid #fff;
+    border-bottom: none;
+}
 #control {
     position: absolute;
     top: 50px;

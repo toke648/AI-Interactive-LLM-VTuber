@@ -1,4 +1,4 @@
-# Interactive-LLM-VTuber
+# Interactive-LLM-VTuber (v0.5.0)
 
 [![GitHub Release](https://img.shields.io/github/v/release/toke648/AI-Interactive-LLM-VTuber)](https://github.com/toke648/AI-Interactive-LLM-VTuber/releases)
 [![license](https://img.shields.io/github/license/toke648/Interactive-LLM-VTuber)](https://github.com/toke648/Interactive-LLM-VTuber/main/LICENSE)
@@ -109,11 +109,31 @@
 - **Model Switching**: Modify the `cubism4Model` variable in `static/js/appserver.js` to switch VTuber models (not yet integrated into the UI).
 - **System Settings**: Access the configuration page via the “Settings” button in the UI. Restart the project to apply changes.
 
-## Update Log (Version 0.4.0)
+## v0.5.0 Update (2025-09-26)
 
-1. **One-click Startup**: Added `setup.bat` script to simplify the startup process for Windows users.
-2. **Model Switching**: Supports manual VTuber model switching by modifying the path in `static/js/appserver.js`.
-3. **System Configuration Page**: Added a settings interface, accessible via the “Settings” button. Restart the project to apply changes.
+Front-end and back-end optimizations for stability, UX, and extensibility:
+
+### Front-end
+- New layout: top bar (version on left, Settings + MCP button on right), left chat history, bottom-centered GPT-style input (rounded textarea + mic + send).
+- Audio autoplay unlock: one user gesture unlocks audio for the whole session.
+- Voice flow rework: voice input now only performs ASR. On stop, front-end polls `/latest_asr`, auto-fills and sends text, unifying the text→LLM→TTS→play→history pipeline (prevents stale audio playback).
+- History + streaming: left history shows “You/AI”; AI replies render with typewriter streaming; persist last 200 messages locally.
+- Thinking indicator: bottom chip “Thinking...” + send button loading state.
+- Background settings: Settings page adds background (color/image). Save triggers hot-reload and immediate application, no refresh.
+- MCP button: shows status (running/stopped) and toggles `mcp_tool.py` process.
+
+### Back-end
+- API/paths hardening: absolute audio URLs, file existence checks after TTS, fixed `/audio/<filename>` directory, TTS empty-text guard.
+- Voice input rework: recording thread writes only last ASR text; adds `GET /latest_asr` for front-end.
+- Hot reload settings: `POST /settings` auto-reloads; `POST /reload_settings` manual reload. Propagates to TTS/LLM/system prompt/audio folder.
+- MCP integration: `GET /mcp/status`, `POST /mcp/start`, `POST /mcp/stop` to control `mcp_tool.py`.
+
+### How to use (highlights)
+- Start: `python server.py` then visit `http://127.0.0.1:5000/`.
+- Text: type and press Send/Enter.
+- Voice: click mic to start, click again to stop; recognized text is auto-sent.
+- Settings: adjust TTS/LLM/background and Save – hot-reloads with no restart.
+- MCP: toggle via top-right button.
 
 ## Notes
 

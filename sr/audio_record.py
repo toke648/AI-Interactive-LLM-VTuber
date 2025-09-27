@@ -1,53 +1,62 @@
+﻿""" utf-8 encoding audio_record.py """
 import speech_recognition as sr
-
-recognizer = sr.Recognizer()
+from typing import Optional
 
 class SpeechRecognizer:
-    def __init__(self):
-        self.recognizer = recognizer
+    """语音识别类"""
+    def __init__(self,
+                 energy_threshold: int = 300,
+                 pause_threshold: float = 0.6,
+                 timeout_seconds: float = 2.0,
+                 phrase_time_limit: float = 6.0,
+                 device_index: Optional[int] = None,
+                 language: str = 'zh-CN'):
+        self.recognizer = sr.Recognizer()
+        self.recognizer.dynamic_energy_threshold = False
+        self.recognizer.energy_threshold = energy_threshold
+        self.recognizer.pause_threshold = pause_threshold
+        self.timeout_seconds = timeout_seconds
+        self.phrase_time_limit = phrase_time_limit
+        self.device_index = device_index
+        self.language = language
 
-    def record(self, recognizer, language='en-US'):
-        """
-        录音并识别
-        :param recognizer: 语音识别器实例
-        :param language: 识别语言
-        :return: 识别结果
-        """
-        with sr.Microphone() as source:
-            # 调整麦克风参数以减少环境噪音
-            self.recognizer.dynamic_energy_threshold = False
-            self.recognizer.energy_threshold = 300
-            self.recognizer.pause_threshold = 0.5
+    def record(self,
+               recognizer: Optional[sr.Recognizer] = None,
+               language: Optional[str] = None
+               ) -> Optional[str]:
 
-            try:
-                # 减少超时时间，提高响应速度
-                audio = self.recognizer.listen(source, timeout=1, phrase_time_limit=5)
-                text = self.recognizer.recognize_google(audio, language=language)
+        # 如果识别器不为空，则使用识别器，否则使用默认识别器
+        r = recognizer or self.recognizer
+        lang = language or self.language
+        mic_kwargs = {}
 
-                print(f"You told: {text}")
-                return text
-            except sr.UnknownValueError:
-                print('Can not understand audio')
-                return None
-            except sr.WaitTimeoutError:
-                print('No Sound detected')
-                return None
-            except sr.RequestError as e:
-                print(f"Identification service error: {e}")
-                return None
-        
-# if __name__ == "__main__":
-#     speech_recognizer = SpeechRecognizer()
-
-#     sound = True  # 设置为True表示有声音输入
-#     # 如果没有声音输入，可以将sound设置为False
-
-#     while True:
-#         # 检测是否有唤醒词，如果没有则继续等待
-#         result = speech_recognizer.record(recognizer, language='zh-CN')
-#         if result == "你好小智":
-#             print("唤醒成功")
-#             text = speech_recognizer.record(recognizer, language='zh-CN')  # 可以根据需要修改语言参数
-#         elif sound == False:
-#             print("没有声音输入，继续等待...")
-#             continue
+        # 如果设备索引不为空，则设置设备索引
+        if self.device_index is not None:
+            mic_kwargs['device_index'] = self.device_index
+        try:
+            with sr.Microphone(**mic_kwargs) as source:
+                try:
+                    r.adjust_for_ambient_noise(source, duration=0.5)
+                except Exception:
+                    pass
+                try:
+                    audio = r.listen(source,
+                                     timeout=self.timeout_seconds,
+                                     phrase_time_limit=self.phrase_time_limit)
+                except sr.WaitTimeoutError:
+                    print('No sound detected (timeout)')
+                    return None
+                try:
+                    text = r.recognize_google(audio, language=lang)
+                    print(f"ASR: {text}")
+                    return text
+                except sr.UnknownValueError:
+                    print('ASR could not understand the audio')
+                    return None
+                except sr.RequestError as e:
+                    print(f"ASR request error: {e}")
+                    return None
+                    
+        except OSError as e:
+            print(f"Microphone error: {e}")
+            return None

@@ -1,10 +1,13 @@
 {
     "path": {
         "audio_directory": "audio",
-        "audio_file": "output.mp3"
+        "audio_file": "output.mp3",
+        "background_type": "color",
+        "background_color": "# 101013",
+        "background_image": "https://i.pximg.net/img-original/img/2023/04/05/21/47/18/106897471_p0.jpg"
     },
     "tts": {
-        "default_voice": "en-US-AvaNeural",
+        "default_voice": "zh-CN-XiaoxiaoNeural",
         "default_rate": "-5%",
         "default_volume": "+50%"
     },

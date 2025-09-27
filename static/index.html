@@ -53,35 +53,37 @@
 <body>
     <canvas id=canvas></canvas>
 
-    <div id="control">
-        <h3>LLM Vtuber .Version 3</h3>
-        <a href="settings.html"><button>Setting</button></a>
-        <br/><br/>
-
-        <div class="label">
-            1.Test talk
+    <!-- 顶部栏：左上版本号，右上设置按钮 -->
+    <div class="topbar">
+        <div class="topbar-left">LLM Vtuber .Version 3</div>
+        <div class="topbar-right">
+            <button id="mcp-toggle" class="send-button" style="margin-right:8px">MCP: 检查中...</button>
+            <a class="topbar-link" href="settings.html">Setting</a>
         </div>
+    </div>
 
-        <!-- 测试音频播放 -->
-        <button id="play">Test audio</button>
+    <!-- 左侧聊天历史栏 -->
+    <aside class="sidebar">
+        <div class="sidebar-header">
+            <span>历史会话</span>
+            <button id="clear-history" class="clear-history-btn" title="清除历史记录">🗑️</button>
+        </div>
+        <div id="history-list" class="history-list"></div>
+    </aside>
 
-        <br/><br/>
+    <!-- 底部居中输入栏（GPT风格） -->
+    <div class="bottom-input">
+        <div class="chat-input">
+            <textarea id="text" class="chat-textarea" placeholder="输入内容，回车发送..." rows="3"></textarea>
+            <button id="mic-btn" class="mic-button" aria-label="语音输入" title="语音输入"></button>
+            <button id="start" class="send-button" aria-label="发送" title="发送">发送</button>
+        </div>
+        <!-- 保留隐藏的原始识别按钮供 JS 触发 -->
+        <button id="start-recognize" style="display:none">Start voice recognition</button>
+    </div>
 
-        <!-- 文本输入 -->
-        <div class="label">2. Call the interface to generate audio</div>
-        <textarea id="text" style="width:400px;height:300px;"></textarea>
-        <br><br/>
-        <button id="start">Start talking</button>
-
-        <br><br/>
-        
-        <!-- 语音识别模式 -->
-        <div class="label">3. Voice recognition mode</div>
-        <button id="start-recognize">Start voice recognition</button>
-        
-        <script>
-
-        </script>
+    <!-- 思考/生成中提示 -->
+    <div id="thinking" class="thinking-chip"><span class="spinner"></span>思考中...</div>
 
 
 

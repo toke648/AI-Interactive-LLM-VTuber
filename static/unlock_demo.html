@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <title>音频解锁最小示例</title>
+    <style>
+        body { font-family: Arial, sans-serif; padding: 24px; }
+        button { margin-right: 12px; padding: 8px 16px; }
+        #log { margin-top: 16px; white-space: pre-wrap; background: #f7f7f7; padding: 12px; border: 1px solid #ddd; }
+    </style>
+</head>
+<body>
+    <h2>音频解锁最小示例</h2>
+    <p>步骤：</p>
+    <ol>
+        <li>先点“启用声音（一次）”完成浏览器的用户手势解锁。</li>
+        <li>随后点击“模拟轮询播放”即可直接出声，不再需要手势。</li>
+    </ol>
+
+    <button id="btnUnlock">启用声音（一次）</button>
+    <button id="btnPlay">模拟轮询播放</button>
+    <div id="log"></div>
+
+    <script>
+    (function(){
+        const log = (...args) => {
+            const el = document.getElementById('log');
+            el.textContent += args.join(' ') + '\n';
+        };
+
+        let unlocked = false;
+        let audioCtx = null;
+        let player = new Audio();
+        player.crossOrigin = 'anonymous';
+        player.preload = 'auto';
+        player.loop = true; // 解锁阶段持续播放
+        player.muted = true; // 解锁阶段静音
+
+        function unlockAudio() {
+            if (unlocked) {
+                log('已解锁，跳过');
+                return;
+            }
+            try {
+                const dataUrl = 'data:audio/mp3;base64,//uQZAAAAAAAAAAAAAAAAAAAAAAAWGluZwAAAA8AAAACAAACcQACcQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA';
+                player.src = dataUrl;
+                const p1 = player.play().catch(() => {});
+
+                if (!audioCtx) {
+                    audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+                }
+                const p2 = audioCtx.resume().then(() => {
+                    const buffer = audioCtx.createBuffer(1, 1, audioCtx.sampleRate);
+                    const source = audioCtx.createBufferSource();
+                    source.buffer = buffer;
+                    source.connect(audioCtx.destination);
+                    try { source.start(0); } catch (e) {}
+                }).catch(() => {});
+
+                Promise.allSettled([p1, p2]).then(() => {
+                    unlocked = true;
+                    log('🔓 解锁完成 (HTMLAudio & WebAudio)');
+                });
+            } catch (e) {
+                log('解锁异常:', e);
+            }
+        }
+
+        function playOnce(url) {
+            if (!unlocked) {
+                log('未解锁，尝试先解锁');
+                unlockAudio();
+            }
+            try {
+                player.muted = false;
+                player.loop = false;
+                player.src = url + '?t=' + Date.now();
+                player.play().then(()=>log('开始播放:', player.src)).catch(err=>log('播放失败:', err));
+            } catch (e) {
+                log('播放异常:', e);
+            }
+        }
+
+        document.getElementById('btnUnlock').addEventListener('click', unlockAudio);
+        document.getElementById('btnPlay').addEventListener('click', () => {
+            // 使用你项目里可访问的音频，示例使用后端输出
+            playOnce('http://127.0.0.1:5000/audio/output.mp3');
+        });
+    })();
+    </script>
+</body>
+</html>
+
+
+
