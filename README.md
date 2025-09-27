@@ -113,6 +113,10 @@
 
 Front-end and back-end optimizations for stability, UX, and extensibility:
 
+![Screenshot](image1.png)
+
+![Screenshot](image.png)
+
 ### Front-end
 - New layout: top bar (version on left, Settings + MCP button on right), left chat history, bottom-centered GPT-style input (rounded textarea + mic + send).
 - Audio autoplay unlock: one user gesture unlocks audio for the whole session.
