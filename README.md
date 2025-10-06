@@ -42,6 +42,10 @@
 - **Windows**: Fully tested and stable.
 - **Linux**: Theoretically compatible (testing recommended).
 
+## Join the discussion
+- QQ: [点击链接加入群聊【技术讨论群】：870790900](https://qm.qq.com/q/et8Vx7F30I)
+- Discover: [https://discord.gg/rBNNe4yr](https://discord.gg/rBNNe4yr)
+
 ## Installation and Use
 
 ### Prerequisites
