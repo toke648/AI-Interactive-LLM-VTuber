@@ -149,6 +149,10 @@ Front-end and back-end optimizations for stability, UX, and extensibility:
 - Linux users may need to verify compatibility. Feedback is welcome via GitHub Issues.
 - The project is actively updated. Follow the GitHub repository for the latest updates.
 
+## Star History
+
+[![Star History Chart](https://api.star-history.com/svg?repos=toke648/AI-Interactive-LLM-VTuber&type=date&legend=top-left)](https://www.star-history.com/#toke648/AI-Interactive-LLM-VTuber&type=date&legend=top-left)
+
 ## License
 
 This project is licensed under the MIT License. Contributions and suggestions are warmly welcomed!
